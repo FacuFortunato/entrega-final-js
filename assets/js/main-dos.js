@@ -9,19 +9,23 @@ contenido.innerHTML = `<h3> Alumno: ${alumno.nombre} ${alumno.apellido}</h3>`;
 mostrarDatos.appendChild(contenido);
 
 //Setear inscripciones
-let setearInscripcion = document.getElementsById("btn-inscripcion");
+let setearInscripcion = document.getElementById("btn-inscripcion");
 let setearInscripcion2 = document.getElementById("btn-inscripcion-2");
 let setearInscripcion3 = document.getElementById("btn-inscripcion-3");
 let setearInscripcion4 = document.getElementById("btn-inscripcion-4");
+let setearInscripcion5 = document.getElementById("btn-inscripcion-5");
+let setearInscripcion6 = document.getElementById("btn-inscripcion-6");
+let setearInscripcion7 = document.getElementById("btn-inscripcion-7");
+let setearInscripcion8 = document.getElementById("btn-inscripcion-8");
 
 
 
 
 
-function inscribir (inscripciones){
+function inscribir (idCurso){
 
     const nuevaInscripcion = inscripciones.value;
-    alumno.setInscripcion(nuevaInscripcion);
+    alumno.setInscripcion(idCurso);
 
     localStorage.setItem("alumno",JSON.stringify(alumno));
 
@@ -33,45 +37,21 @@ function inscribir (inscripciones){
 
 };
 
-setearInscripcion.addEventListener("click", inscribir());
-setearInscripcion2.addEventListener("click", inscribir());
-setearInscripcion3.addEventListener("click", inscribir());
-setearInscripcion4.addEventListener("click", inscribir());
+
+setearInscripcion.addEventListener("click", ()=> inscribir (1) );
+setearInscripcion2.addEventListener("click", ()=> inscribir (2));
+setearInscripcion3.addEventListener("click", ()=> inscribir (3));
+setearInscripcion4.addEventListener("click", ()=> inscribir (4));
+setearInscripcion5.addEventListener("click", ()=> inscribir (5));
+setearInscripcion6.addEventListener("click", ()=> inscribir (6));
+setearInscripcion7.addEventListener("click", ()=> inscribir (7));
+setearInscripcion8.addEventListener("click", ()=> inscribir (8));
 
 
 //Agregando la información a la sección alumno
 let listaInscripciones = document.getElementById ("lista-inscripciones");
 let inscripcion = document.createElement ("div");
 
-const arrayInscripciones =  [  {
-    "id": 1,
-    "contenidos": 'Taller reparación de radiadores',
-    "precio mensual": 3000,
-    "fecha inicio": "23/02/2023",
-},
-{
-    "id": 2,
-    "contenidos": 'Carrera mecánica',
-    "precio mensual": 5000,
-    "fecha inicio": "23/02/2023",
-},
-{
-    "id": 3,
-    "contenidos": 'Curso de mecánica automotriz',
-    "precio mensual": 3000,
-    "fecha inicio": "23/02/2023",
-},
-{
-    "id": 4,
-    "contenidos": 'Curso de inyección electrónica',
-    "precio mensual": 2000,
-    "fecha inicio": "23/02/2023",
-}].map(({contenidos})=> `<div>
-                            <li>${contenidos}</li>
-                            <button href="" class="btn btn-dark btn-inscripcion" type="submit" id="btn-desinscripcion"> Desinscribirme </button>
-                        </div>`)
-
-const inscripciones =  arrayInscripciones.reduce((elemento, acumulador)=>{return acumulador + elemento});
 
 inscripcion.innerHTML = inscripciones
 //También se agregó un botón para registrar una desinscripción
