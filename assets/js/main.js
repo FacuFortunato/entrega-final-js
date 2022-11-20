@@ -39,7 +39,20 @@ function validarDatos () {
 cargaDatos.addEventListener("click", validarDatos);
 
 
+//Simulando carga de datos del alumno a base de datos
+fetch ('https://jsonplaceholder.typicode.com/posts',{
 
+    method: 'POST',
+    body: JSON.stringify ({
+        title: 'Nuevo alumno',
+        body: alumno.nombre,
+        userId: 1
+    }),
+    headers: {'Content-type': 'application.json; charset=UTF-8'},
+});
+
+    .then ((response) => response.json ())
+    .then ((data) => console.log (data))
 
 
 

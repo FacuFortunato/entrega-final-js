@@ -24,7 +24,7 @@ let setearInscripcion8 = document.getElementById("btn-inscripcion-8");
 
 function inscribir (idCurso){
 
-    const nuevaInscripcion = inscripciones.value;
+    const idCurso = inscripciones.value;
     alumno.setInscripcion(idCurso);
 
     localStorage.setItem("alumno",JSON.stringify(alumno));
@@ -32,7 +32,10 @@ function inscribir (idCurso){
     //Mensaje de confirmación de la inscripción
     Toastify ({
         text: "Inscripción exitosa !",
-        duration: 2000
+        duration: 2000,
+        gravity: top,
+        stopOnFocus: true,
+        position: right,
     }).showToast ();
 
 };
@@ -46,16 +49,6 @@ setearInscripcion5.addEventListener("click", ()=> inscribir (5));
 setearInscripcion6.addEventListener("click", ()=> inscribir (6));
 setearInscripcion7.addEventListener("click", ()=> inscribir (7));
 setearInscripcion8.addEventListener("click", ()=> inscribir (8));
-
-
-//Agregando la información a la sección alumno
-let listaInscripciones = document.getElementById ("lista-inscripciones");
-let inscripcion = document.createElement ("div");
-
-
-inscripcion.innerHTML = inscripciones
-//También se agregó un botón para registrar una desinscripción
-listaInscripciones.append(inscripcion);
 
 
 //Desincripcion
@@ -77,7 +70,8 @@ desinscripcion.addEventListener ("click", ()=>{
             //Eliminar la inscripción
             const desinscribir = ()=> {
 
-                inscripciones.innerHTML = "";
+                setearInscripcion.removeEventListener()
+                inscripciones.value = "";
             }
 
             desinscribir ();
